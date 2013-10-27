@@ -190,8 +190,8 @@ abstract class ModelBase extends APP_Base {
      */
     function __construct($data_id = null) {
         parent::__construct();
+        $this->_clazz = $this->getClass();
         $this->_table = $this->getTable();
-        if (!$this->_clazz) $this->_clazz = self::getClass();
 
         // Start connection
         $this->_cnx = new Cnx();

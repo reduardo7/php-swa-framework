@@ -44,16 +44,16 @@ if (ApplicationEnvIsDevelopment) {
  * Use "*" as ALL selector (for CONTEXT or VIEW).
  *
  * @example
- * array(
- *     '*\/login',
- *     'admin/login'
+ * array(                                                                            */
+#*     '*/login',
+/*     'admin/login'
  * )
  *
  * @var array
  *
  * @see Login::isValidPage()
  */
-$GLOBALS[AppConfig][AppConfigLoginNoValidatePages] = array('admin/login', 'admin/db-update', 'admin/recuperar');
+$GLOBALS[AppConfig][AppConfigLoginNoValidatePages] = array('*/login');
 
 
 // Custom configs

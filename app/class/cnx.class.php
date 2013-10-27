@@ -291,10 +291,10 @@ class Cnx {
      * Connect to MySQL.
      */
     public function connect() {
-        if ($this->_cnx = @mysql_connect($this->_cnx_server, $this->_cnx_user, $this->_cnx_pass)) {
-            if (@mysql_select_db($this->_cnx_db, $this->_cnx)) {
+        if ($this->_cnx = mysql_connect($this->_cnx_server, $this->_cnx_user, $this->_cnx_pass)) {
+            if (mysql_select_db($this->_cnx_db, $this->_cnx)) {
                 // Set all results as UTF-8
-                @mysql_query("SET NAMES 'utf8'");
+                    mysql_query("SET NAMES 'utf8'");
             } else {
                 throw new Exception("ERROR! Can not select DB [{$this->_cnx_db}]");
             }

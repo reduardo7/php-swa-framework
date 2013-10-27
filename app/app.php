@@ -13,7 +13,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(-1);
 
 // XDIE
 require('xdie.inc.php');
@@ -26,7 +25,7 @@ require('constants.inc.php');
 if (!ApplicationEnvIsDevelopment) {
     // Production environment
     // Remove error reporting
-    error_reporting(0);
+    // error_reporting(0);
 }
 
 
@@ -1095,19 +1094,20 @@ class APP extends APP_Base {
     }
 }
 
-/**
- * Main App.
- *
- * @var APP
- */
-$GLOBALS['APP'] = $APP = new APP();
-
 try {
+    /**
+     * Main App.
+     *
+     * @var APP
+     */
+    $GLOBALS['APP'] = $APP = new APP();
     // Render page
     $APP->renderView($APP->params->context . DIRECTORY_SEPARATOR . $APP->params->view);
 } catch (Exception $e) {
     // Exception
     if (ApplicationEnvIsDevelopment) {
         $APP->errorPage500("{$e->getMessage()}\n\n{$e->getTraceAsString()}");
+    } else {
+        $APP->errorPage500("Error!");
     }
 }
